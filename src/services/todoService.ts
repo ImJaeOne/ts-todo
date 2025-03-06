@@ -1,7 +1,8 @@
+import { BASE_URL } from "../constants/constants";
 import { Paginate, Todo } from "../types/todoTypes";
 
 export const getTodos = async (): Promise<Todo[]> => {
-  const res = await fetch("http://localhost:4000/todos?_page=1&_per_page=25");
+  const res = await fetch(`${BASE_URL}/todos?_page=1&_per_page=25`);
 
   if (!res.ok) {
     throw new Error("Failed to fetch todos");
@@ -13,7 +14,7 @@ export const getTodos = async (): Promise<Todo[]> => {
 };
 
 export const addTodo = async (newTodo: Todo): Promise<Todo[]> => {
-  const res = await fetch("http://localhost:4000/todos", {
+  const res = await fetch(`${BASE_URL}/todos`, {
     method: "POST",
     body: JSON.stringify(newTodo),
   });
@@ -28,7 +29,7 @@ export const addTodo = async (newTodo: Todo): Promise<Todo[]> => {
 };
 
 export const deleteTodo = async (id: Todo["id"]): Promise<Todo[]> => {
-  const res = await fetch(`http://localhost:4000/todos/${id}`, {
+  const res = await fetch(`${BASE_URL}/todos/${id}`, {
     method: "DELETE",
   });
 
@@ -45,7 +46,7 @@ export const toggleTodo = async ({
   id,
   completed,
 }: Omit<Todo, "text">): Promise<Todo[]> => {
-  const res = await fetch(`http://localhost:4000/todos/${id}`, {
+  const res = await fetch(`${BASE_URL}/todos/${id}`, {
     method: "PATCH",
     body: JSON.stringify({
       completed: !completed,
