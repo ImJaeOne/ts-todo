@@ -28,8 +28,8 @@ export const useAddTodo = () => {
 
       queryClient.setQueryData(
         [QUERY_KEY.TODOLIST],
-        (oldData: Todo[] | undefined) => {
-          return oldData ? [...oldData, newTodo] : [newTodo];
+        (old: Todo[] | undefined) => {
+          return old ? [...old, newTodo] : [newTodo];
         }
       );
 
