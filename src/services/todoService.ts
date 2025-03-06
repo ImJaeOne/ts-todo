@@ -8,9 +8,9 @@ export const getTodos = async () => {
     throw new Error("Failed to fetch todos");
   }
 
-  const data: Paginate<Todo> = await res.json();
+  const responseData: Paginate<Todo> = await res.json();
 
-  return data.data;
+  return responseData.data;
 };
 
 export const addTodo = async (newTodo: Todo) => {
