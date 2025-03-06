@@ -4,8 +4,6 @@ export type Todo = {
   completed: boolean;
 };
 
-export type TodoListProps = { todoList: Todo[] };
-
 export type TodoItemProps = Todo;
 
 export type Paginate<T> = {
