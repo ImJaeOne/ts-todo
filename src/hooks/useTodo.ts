@@ -9,7 +9,7 @@ import {
 import { Todo } from "../types/todoTypes";
 
 export const useGetTodoList = () => {
-  return useQuery<Todo[], Error>({
+  return useQuery({
     queryKey: [QUERY_KEY.TODOLIST],
     queryFn: getTodos,
   });
@@ -26,12 +26,9 @@ export const useAddTodo = () => {
 
       const prevTodoList = queryClient.getQueryData([QUERY_KEY.TODOLIST]);
 
-      queryClient.setQueryData(
-        [QUERY_KEY.TODOLIST],
-        (old: Todo[] | undefined) => {
-          return old ? [...old, newTodo] : [newTodo];
-        }
-      );
+      queryClient.setQueryData([QUERY_KEY.TODOLIST], (old: Todo[]) => {
+        return old ? [...old, newTodo] : [newTodo];
+      });
 
       return () => queryClient.setQueryData([QUERY_KEY.TODOLIST], prevTodoList);
     },
