@@ -1,10 +1,12 @@
-import { TodoListProps } from "../types/todoTypes";
+import { useGetTodoList } from "../hooks/useTodo";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ todoList }: TodoListProps) => {
+const TodoList = () => {
+  const { data: todoList } = useGetTodoList();
+
   return (
     <ul>
-      {todoList.map((todo) => (
+      {todoList?.map((todo) => (
         <TodoItem key={todo.id} {...todo} />
       ))}
     </ul>
