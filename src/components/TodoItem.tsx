@@ -1,5 +1,7 @@
 import { useDeleteTodo, useToggleTodo } from "../hooks/useTodo";
-import { Todo, TodoItemProps } from "../types/todoTypes";
+import { Todo } from "../types/todoTypes";
+
+type TodoItemProps = Todo;
 
 const TodoItem = ({ id, text, completed }: TodoItemProps) => {
   const { mutate: deleteMutate } = useDeleteTodo();
