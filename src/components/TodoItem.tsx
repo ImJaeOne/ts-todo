@@ -1,7 +1,8 @@
-import { useDeleteTodo, useToggleTodo } from "../hooks/useTodo";
+import { useTodoMutation } from "../hooks/useTodoMutation";
 import { Todo } from "../types/todoTypes";
 
 const TodoItem = ({ id, text, completed }: Todo) => {
+  const { useDeleteTodo, useToggleTodo } = useTodoMutation();
   const { mutate: deleteMutate } = useDeleteTodo();
   const { mutate: toggleMutate } = useToggleTodo();
 

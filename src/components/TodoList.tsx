@@ -1,4 +1,4 @@
-import { useGetTodoList } from "../hooks/useTodo";
+import { useGetTodoList } from "../hooks/useTodoQuery";
 import TodoItem from "./TodoItem";
 
 const TodoList = () => {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { type Todo } from "../types/todoTypes";
-import { useAddTodo } from "../hooks/useTodo";
+import { useTodoMutation } from "../hooks/useTodoMutation";
 
 const baseForm = {
   id: "",
@@ -10,6 +10,7 @@ const baseForm = {
 
 const TodoForm = () => {
   const [newTodo, setNewTodo] = useState<Todo>(baseForm);
+  const { useAddTodo } = useTodoMutation();
 
   const { mutate: addMutation } = useAddTodo();
 
